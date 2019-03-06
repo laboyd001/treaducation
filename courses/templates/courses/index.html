@@ -1,4 +1,19 @@
 {% extends "courses/base.html" %}
 
 {% block content %}
+
+<p>Subjects:</p>
+
+    <ul>
+        {% for subject in subject_list %}
+            <li class="subjects">
+                {{ subject.title }}
+            </li>
+        {% empty %}
+            <li>No Subjects have been added yet.</li>
+        {% endfor %}  
+    </ul>
+
+    
+
 {% endblock content %}
