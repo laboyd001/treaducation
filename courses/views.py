@@ -29,3 +29,16 @@ def subject(request, subject_id):
 
     return render(request, 'courses/subject.html', context)
 
+def course(request, course_id):
+    """show a single course and its modules
+    """
+
+    course = Course.objects.get(id=course_id)
+    modules = Module.objects.filter(course_id = course_id)
+    context = {
+        'course': course,
+        'modules': modules,
+    }
+
+    return render(request, 'courses/course.html', context)
+
