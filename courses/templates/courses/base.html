@@ -9,6 +9,13 @@
 <body>
   <div id="header">
     <a href="/" class="logo">Treaducation</a>
+    <ul class="menu">
+        {% if request.user.is_authenticated %}
+          <li><a href="{% url "logout" %}">Sign out</a></li>
+        {% else %}
+          <li><a href="{% url "login" %}">Student Sign in</a></li>
+        {% endif %}
+      </ul>
   </div>
   <div id="content">
     {% block content %}
