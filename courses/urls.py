@@ -6,6 +6,11 @@ urlpatterns = [
     # Homepage
     path('', views.index, name='index'),
 
+    # Authentication
+    path('login', views.login_user, name='login'),
+    path('logout', views.user_logout, name='logout'),
+    path('register', views.register, name='register'),
+
     # subjects
     path('subjects/<int:subject_id>/', views.subject, name='subject'),
 
