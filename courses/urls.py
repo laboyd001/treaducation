@@ -6,4 +6,7 @@ urlpatterns = [
     # Homepage
     path('', views.index, name='index'),
 
+    # subjects
+    path('subjects/<int:subject_id>/', views.subject, name='subject'),
+
 ]
