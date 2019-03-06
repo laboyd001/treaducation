@@ -9,11 +9,12 @@
 <body>
   <div id="header">
     <a href="/" class="logo">Treaducation</a>
-    <ul class="menu">
+      <ul class="menu">
         {% if request.user.is_authenticated %}
-          <li><a href="{% url "logout" %}">Sign out</a></li>
+          <li><a href="{% url 'courses:logout' %}">Log Out</a></li>
         {% else %}
-          <li><a href="{% url "login" %}">Student Sign in</a></li>
+          <li><a href="{% url 'courses:login' %}">Log In</a></li>
+          <li><a href="{% url 'courses:register' %}">Register</a></li>
         {% endif %}
       </ul>
   </div>
