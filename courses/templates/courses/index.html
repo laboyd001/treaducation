@@ -5,9 +5,9 @@
 <p>Subjects:</p>
 
     <ul>
-        {% for subject in subject_list %}
+        {% for subject in subjects %}
             <li class="subjects">
-                {{ subject.title }}
+                <a href="{% url 'courses:subject' subject.id %}">{{ subject.title }}</a>
             </li>
         {% empty %}
             <li>No Subjects have been added yet.</li>
