@@ -9,4 +9,7 @@ urlpatterns = [
     # subjects
     path('subjects/<int:subject_id>/', views.subject, name='subject'),
 
+    # courses
+    path('courses/<int:course_id>/', views.course, name='course'),
+
 ]

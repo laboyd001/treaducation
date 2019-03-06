@@ -7,8 +7,8 @@
 <h4>Courses:</h4>
 <ul>
 {% for course in courses %}
-    <li>
-        {{ course.title }}
+    <li class="courses">
+        <a href="{% url 'courses:course' course.id %}">{{ course.title }}</a>
     </li>
 {% empty %}
     <li>
