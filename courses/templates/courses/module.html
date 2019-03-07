@@ -1,0 +1,12 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+
+<h2>Module: {{ module.title }}</h2>
+
+<div>
+    <p>{{ module.text }}</p>
+    <img src="{{ module.image.url }}">
+</div>
+
+{% endblock content %}

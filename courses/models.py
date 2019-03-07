@@ -53,9 +53,13 @@ class Module(models.Model):
                               on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    text = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to = 'images/', default = 'images/no-img.jpg')
 
     def __str__(self):
         return self.title
+
+
 
 
 
