@@ -17,4 +17,8 @@ urlpatterns = [
     # courses
     path('courses/<int:course_id>/', views.course, name='course'),
 
+    # modules
+    path('modules/<int:module_id>/', views.module, name='module'),
+
+
 ]

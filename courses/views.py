@@ -3,15 +3,19 @@ from django.contrib.auth import logout, login, authenticate
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.exceptions import ValidationError
 from django.template import RequestContext
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic.base import TemplateResponseMixin, View
 from django.urls import reverse
+from django.db.models import Count
+from django.views.generic.detail import DetailView
+
 
 from courses.forms import *
 from .models import *
 
 
 # Homepage =========================================
-def index(request):
+def index(request, subject=None):
     """The home page for treaducation"""
 
     subjects = Subject.objects.order_by('title')
@@ -21,6 +25,8 @@ def index(request):
     }
     
     return render(request, 'courses/index.html', context)
+
+  
 
 # End Homepage ======================================
 
@@ -134,4 +140,16 @@ def course(request, course_id):
     }
 
     return render(request, 'courses/course.html', context)
+
+def module(request, module_id):
+    """show a single module and its contents
+    """
+
+    module = Module.objects.get(id=module_id)
+    context = {
+        'module': module,
+    }
+
+    return render(request, 'courses/module.html', context)
+
 
