@@ -114,7 +114,7 @@ def user_logout(request):
 
 # End Authentication ================================
 
-
+# Subjects ==========================================
 def subject(request, subject_id):
     """show a single subject and its courses
     """
@@ -127,6 +127,10 @@ def subject(request, subject_id):
     }
 
     return render(request, 'courses/subject.html', context)
+
+# End Subjects =======================================
+
+# Courses ============================================
 
 def course(request, course_id):
     """show a single course and its modules
@@ -141,6 +145,27 @@ def course(request, course_id):
 
     return render(request, 'courses/course.html', context)
 
+def course_add(request):
+    ''' Directs user to the add employee form / or /
+    Creates new employee record in database and redirects to employees page
+    '''
+    if request.method != 'POST':
+      return render(request, 'Website/employees_add.html', context)
+    else:
+      first = request.POST["first_name"]
+      last = request.POST["last_name"]
+      start = request.POST["start_date"]
+      department_id = request.POST["department"]
+      department = Department.objects.get(id=department_id)
+      is_supervisor = request.POST["is_supervisor"]
+
+      new_employee = Employee(first_name=first, last_name=last, start_date=start, department=department, is_supervisor=is_supervisor)
+      new_employee.save()
+    return HttpResponseRedirect(reverse('Website:employees'))
+# End Courses ========================================
+
+# Modules ============================================
+
 def module(request, module_id):
     """show a single module and its contents
     """
@@ -151,5 +176,8 @@ def module(request, module_id):
     }
 
     return render(request, 'courses/module.html', context)
+
+# End Modules ==========================================
+
 
 
