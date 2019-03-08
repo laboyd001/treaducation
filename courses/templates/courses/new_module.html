@@ -1,0 +1,12 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+    <h3>Add a New Module:</h3>
+
+    <form action="{% url 'courses:new_module' %}" method='post'>
+        {% csrf_token %}
+        <table>{{ form.as_table }}</table>
+        <button type="submit" class="btn btn-primary">Add Module</button>
+    </form>
+
+{% endblock content %}
