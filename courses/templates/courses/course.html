@@ -5,16 +5,25 @@
 <h2>Course: {{ course.title }}</h2>
 
 <h4>Modules:</h4>
-    <ul>
+
     {% for module in modules %}
-        <li class="modules">
-                <a href="{% url 'courses:module' module.id %}">{{ module.title }}</a>
-        </li>
+        <div class="card text-center">
+            <div class="card">
+                <div class="card-body">
+                        <a href="{% url 'courses:module' module.id %}">{{ module.title }}</a>
+                </div>
+            </div>
+        </div>
+        <br>
     {% empty %}
-        <li>
-            There are no modules for this subject yet.
-        </li>
+        <div class="card text-center">
+            <div class="card">
+                <div class="card-body">
+                        There are no modules for this course yet.
+                </div>
+            </div>
+        </div>
     {% endfor %}
-    </ul>
 
 {% endblock content %}
+
