@@ -14,18 +14,20 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password', 'first_name', 'last_name',)
 
 
-class Course_Form(forms.ModelForm):
+class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['subject', 'title', 'overview']
+        fields = ['subject', 'title', 'slug', 'overview', 'owner']
         labels = {
             'subject': 'Subject',
             'title': 'Course Title',
+            'slug': 'Slug',
             'overview': 'Course Overview',
+            'owner': 'Instructor'
         }
        
 
-class Module_Form(forms.ModelForm):
+class ModuleForm(forms.ModelForm):
     class Meta:
         model = Module
         fields = ['course','title', 'description', 'text', 'image']
