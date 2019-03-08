@@ -179,6 +179,23 @@ def module(request, module_id):
 
     return render(request, 'courses/module.html', context)
 
+def new_module(request):
+    ''' adds new modules to treaducation
+    '''
+    course = Course.objects.order_by('title')
+
+    if request.method != 'POST':
+      form = ModuleForm()
+    else:
+      form = ModuleForm(data=request.POST)
+      if form.is_valid():
+          form.save()
+          return render(request, 'courses/module_addition_success.html')
+    context = {
+        'form': form,
+        'course': course}
+    return render(request, 'courses/new_module.html', context)
+
 # End Modules ==========================================
 
 
