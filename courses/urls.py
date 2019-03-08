@@ -36,6 +36,8 @@ urlpatterns = [
     path('my_courses/<int:user_id>/', views.my_courses,name='my_courses'),
     # delete a course
     path('my_courses/delete/<int:course_id>',views.course_delete, name='course_delete'),
+    #  edit a course
+    path('my_courses/edit/<int:course_id>',views.course_edit, name='course_edit'),
 
 
 ]
