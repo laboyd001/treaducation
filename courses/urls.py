@@ -33,7 +33,9 @@ urlpatterns = [
     # add modules
     path('new_course/', views.new_module,name='new_module'),
     # view your courses
-    path('my_courses/<int:user_id>/', views.my_courses, name='my_courses'),
+    path('my_courses/<int:user_id>/', views.my_courses,name='my_courses'),
+    # delete a course
+    path('my_courses/delete/<int:course_id>',views.course_delete, name='course_delete'),
 
 
 ]
