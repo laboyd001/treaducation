@@ -145,23 +145,25 @@ def course(request, course_id):
 
     return render(request, 'courses/course.html', context)
 
-def course_add(request):
-    ''' Directs user to the add employee form / or /
-    Creates new employee record in database and redirects to employees page
+def new_course(request, user_id):
+    ''' adds new courses to treaducation
     '''
-    if request.method != 'POST':
-      return render(request, 'Website/employees_add.html', context)
-    else:
-      first = request.POST["first_name"]
-      last = request.POST["last_name"]
-      start = request.POST["start_date"]
-      department_id = request.POST["department"]
-      department = Department.objects.get(id=department_id)
-      is_supervisor = request.POST["is_supervisor"]
+    user = User.objects.get(id=user_id)
+    print('user', user.id)
+    subject = Subject.objects.order_by('title')
 
-      new_employee = Employee(first_name=first, last_name=last, start_date=start, department=department, is_supervisor=is_supervisor)
-      new_employee.save()
-    return HttpResponseRedirect(reverse('Website:employees'))
+    if request.method != 'POST':
+      form = CourseForm()
+    else:
+      form = CourseForm(data=request.POST)
+      if form.is_valid():
+          form.save()
+          return render(request, 'courses/course_addition_success.html')
+    context = {
+        'user': user,
+        'form': form,
+        'subject': subject}
+    return render(request, 'courses/new_course.html', context)
 # End Courses ========================================
 
 # Modules ============================================
