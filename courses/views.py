@@ -164,6 +164,35 @@ def new_course(request, user_id):
         'form': form,
         'subject': subject}
     return render(request, 'courses/new_course.html', context)
+
+
+@login_required
+def my_courses(request, user_id):
+    '''user account page with payment details'''
+
+    template_name = 'courses/my_courses.html'
+    user = User.objects.get(id=user_id)
+    print('user', user_id)
+    courses = Course.objects.filter(owner_id=user_id)
+    context = {
+        'user': user,
+        'courses': courses,
+    }
+
+    return render(request, template_name, context)
+
+def my_account(request, user_id):
+    '''user account page'''
+    currentuser = request.user
+    template_name = 'my_account/my_account.html'
+    user = User.objects.get(id=user_id)
+    context = {
+        # 'user': user,
+        'currentuser': currentuser.customer.id,
+    }
+
+    return render(request, template_name, context)
+
 # End Courses ========================================
 
 # Modules ============================================
