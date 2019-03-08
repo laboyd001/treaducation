@@ -183,6 +183,7 @@ def my_courses(request, user_id):
 
     return render(request, template_name, context)
 
+
 @login_required
 def course_delete(request, course_id):
     '''delete course from course list'''
