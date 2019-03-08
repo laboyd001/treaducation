@@ -8,6 +8,12 @@
         <ul>
             <li>
                 {{ course.title }}
+                <form action="{% url 'courses:course_delete' course.id %}" method='POST'>
+                    {% csrf_token %}
+                    <button name='submit'>
+                        Delete Course
+                    </button>
+                </form>
             </li>
         </ul>
         {% endfor %}

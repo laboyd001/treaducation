@@ -145,6 +145,9 @@ def course(request, course_id):
 
     return render(request, 'courses/course.html', context)
 
+# ***Instructor methods***
+
+@login_required
 def new_course(request, user_id):
     ''' adds new courses to treaducation
     '''
@@ -172,7 +175,6 @@ def my_courses(request, user_id):
 
     template_name = 'courses/my_courses.html'
     user = User.objects.get(id=user_id)
-    print('user', user_id)
     courses = Course.objects.filter(owner_id=user_id)
     context = {
         'user': user,
@@ -181,17 +183,21 @@ def my_courses(request, user_id):
 
     return render(request, template_name, context)
 
-def my_account(request, user_id):
-    '''user account page'''
-    currentuser = request.user
-    template_name = 'my_account/my_account.html'
-    user = User.objects.get(id=user_id)
-    context = {
-        # 'user': user,
-        'currentuser': currentuser.customer.id,
-    }
 
-    return render(request, template_name, context)
+@login_required
+def course_delete(request, course_id):
+    '''delete course from course list'''
+
+    
+    if request.method == 'POST':
+        currentuser = request.user
+        print("current user", currentuser)
+        selected_course = Course.objects.get(id=course_id)
+        selected_course.delete()
+
+        return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))   
+
+
 
 # End Courses ========================================
 
@@ -208,6 +214,9 @@ def module(request, module_id):
 
     return render(request, 'courses/module.html', context)
 
+# ***Instructor methods***
+
+@login_required
 def new_module(request):
     ''' adds new modules to treaducation
     '''
