@@ -4,15 +4,23 @@
 
 <p>Subjects:</p>
 
-    <ul>
         {% for subject in subjects %}
-            <li class="subjects">
-                <a href="{% url 'courses:subject' subject.id %}">{{ subject.title }}</a>
-            </li>
+            <div class="card text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{% url 'courses:subject' subject.id %}" class="stretched-link text-danger">{{ subject.title }}</a>
+                    </div>
+                </div>
+            </div>
+            <br>
         {% empty %}
-            <li>No Subjects have been added yet.</li>
+            <div class="card text-center">
+                <div class="card">
+                    <div class="card-body">No Subjects have been added yet.</div>
+                </div>
+            </div>
         {% endfor %}  
-    </ul>
+    
 
     
 
