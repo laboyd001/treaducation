@@ -188,16 +188,33 @@ def my_courses(request, user_id):
 def course_delete(request, course_id):
     '''delete course from course list'''
 
-    
     if request.method == 'POST':
         currentuser = request.user
         print("current user", currentuser)
         selected_course = Course.objects.get(id=course_id)
         selected_course.delete()
 
-        return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))   
+        return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))
+
+@login_required
+def course_edit(request, course_id):
+    """Edit an existing course"""
+
+    course = Course.objects.get(id=course_id)
+    currentuser = request.user
 
 
+    if request.method != 'POST':
+        #Initial request; pre-fill form with the current entry.
+        form = CourseForm(instance=course)
+    else:
+        form = CourseForm(instance=course, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))
+
+    context = {'course': course, 'form': form}
+    return render(request, 'courses/edit_course.html', context)
 
 # End Courses ========================================
 
@@ -233,6 +250,19 @@ def new_module(request):
         'form': form,
         'course': course}
     return render(request, 'courses/new_module.html', context)
+
+@login_required
+def module_delete(request, module_id):
+    '''delete course from course list'''
+
+    
+    if request.method == 'POST':
+        currentuser = request.user
+        print("current user", currentuser)
+        selected_module = Module.objects.get(id=module_id)
+        selected_module.delete()
+
+        return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))
 
 # End Modules ==========================================
 
