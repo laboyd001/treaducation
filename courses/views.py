@@ -186,10 +186,10 @@ def my_course_detail(request, course_id):
     """Show a single course and all of its modules."""
 
     course = Course.objects.get(id=course_id)
-    # modules = course.module_set.order_by('title')
-    # context = {'course': course, 'modules': modules}
+    modules = course.module_set.order_by('title')
+    context = {'course': course, 'modules': modules}
 
-    return render(request, 'courses/my_course_detail.html', {'course':course})
+    return render(request, 'courses/my_course_detail.html', context)
 
 
 @login_required

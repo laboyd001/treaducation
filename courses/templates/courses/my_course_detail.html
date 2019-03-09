@@ -1,13 +1,45 @@
 {% extends 'courses/base.html' %}
 
-{% block header %}
-  <h2>{{ course }}</h2>
-{% endblock header %}
 
 {% block content %}
+
+<div class="jumbotron">
+        <h2 class="display-4">{{ course.title }}</h2>
+            <p class="lead">{{ course.overview }}</p>
+            <hr class="my-4">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <form action="{% url 'courses:my_courses' %}" method='GET'>
+                        {% csrf_token %}
+                        <button name='submit' class="btn btn-danger btn-sm">
+                            Back To My Courses
+                        </button>
+                    </form>
+                </div>
+    </div>
+
+<h2>Modules:</h2>
+
+{% for module in modules %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>
+      {{ module.title}}
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    {{ module.description|linebreaks }}
+  </div>
+</div>
+  {% empty %}
+    There are no entries for this topic yet.
+{% endfor %}
 
  
 
   
 
 {% endblock content %}
+
+
+
