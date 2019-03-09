@@ -170,18 +170,26 @@ def new_course(request, user_id):
 
 
 @login_required
-def my_courses(request, user_id):
-    '''user account page with payment details'''
+def my_courses(request):
+    '''Show all courses created by user'''
 
     template_name = 'courses/my_courses.html'
-    user = User.objects.get(id=user_id)
-    courses = Course.objects.filter(owner_id=user_id)
+    courses = Course.objects.filter(owner=request.user)
     context = {
-        'user': user,
         'courses': courses,
     }
 
     return render(request, template_name, context)
+
+@login_required
+def my_course_detail(request, course_id):
+    """Show a single course and all of its modules."""
+
+    course = Course.objects.get(id=course_id)
+    modules = course.module_set.order_by('title')
+    context = {'course': course, 'modules': modules}
+
+    return render(request, 'courses/my_course_detail.html', context)
 
 
 @login_required
@@ -234,18 +242,20 @@ def module(request, module_id):
 # ***Instructor methods***
 
 @login_required
-def new_module(request):
+def new_module(request, course_id):
     ''' adds new modules to treaducation
     '''
-    course = Course.objects.order_by('title')
+    course = Course.objects.get(id=course_id)
 
     if request.method != 'POST':
       form = ModuleForm()
     else:
       form = ModuleForm(request.POST, request.FILES)
       if form.is_valid():
-          form.save()
-          return render(request, 'courses/module_addition_success.html')
+          new_module = form.save(commit=False)
+          new_module.course = course
+          new_module.save()
+          return HttpResponseRedirect(reverse('courses:my_course_detail', args=[course_id]))
     context = {
         'form': form,
         'course': course}

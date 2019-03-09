@@ -30,9 +30,8 @@ class CourseForm(forms.ModelForm):
 class ModuleForm(forms.ModelForm):
     class Meta:
         model = Module
-        fields = ['course','title', 'description', 'text', 'image']
+        fields = ['title', 'description', 'text', 'image']
         labels = {
-            'course': 'Course',
             'title': 'Title',
             'description': 'Description',
             'text': 'Module Text',

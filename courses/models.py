@@ -49,7 +49,6 @@ class Module(models.Model):
     '''the blueprints for a module
     '''
     course = models.ForeignKey(Course,
-                              related_name='modules',
                               on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)

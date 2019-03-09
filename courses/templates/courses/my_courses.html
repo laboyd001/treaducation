@@ -5,34 +5,43 @@
     <h3>My Courses:</h3>
 
         {% for course in courses %}
-        
-
-        <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ course.title }}</h5>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <form action="{% url 'courses:course_delete' course.id %}" method='POST'>
-                        {% csrf_token %}
-                        <button name='submit' class="btn btn-danger btn-sm">
-                            Delete Course
-                        </button>
-                    </form>
-                    <br>
-                    <form action="{% url 'courses:course_edit' course.id %}" method='GET'>
-                        {% csrf_token %}
-                        <button name='submit' class="btn btn-danger btn-sm">
-                            Edit Course
-                        </button>
-                    </form>
-                </div>
+        <div class="jumbotron">
+                <h4 class="display-4">
+                    {{ course.title }}
+                    </h4>
+                    <p class="lead">{{ course.overview }}</p>
+                    <hr class="my-4">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <form action="{% url 'courses:my_course_detail' course.id %}" method='POST'>
+                                {% csrf_token %}
+                                <button name='submit' class="btn btn-danger btn-sm">
+                                    View Course
+                                </button>
+                            </form>
+                            <br>
+                        <form action="{% url 'courses:course_delete' course.id %}" method='POST'>
+                            {% csrf_token %}
+                            <button name='submit' class="btn btn-danger btn-sm">
+                                Delete Course
+                            </button>
+                        </form>
+                        <br>
+                        <form action="{% url 'courses:course_edit' course.id %}" method='GET'>
+                            {% csrf_token %}
+                            <button name='submit' class="btn btn-danger btn-sm">
+                                Edit Course
+                            </button>
+                        </form>
+                    </div>
             </div>
-        </div>
         <br>
         {% endfor %}
 
         
 
 {% endblock content %}
+
+
 
         
 
