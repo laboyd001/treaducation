@@ -3,7 +3,7 @@
 {% block content %}
     <h3>Add a New Module:</h3>
 
-    <form action="{% url 'courses:new_module' %}" method='post'>
+    <form action="{% url 'courses:new_module' %}" method='post' enctype="multipart/form-data">
         {% csrf_token %}
         <table>{{ form.as_table }}</table>
         <button type="submit" class="btn btn-danger btn-sm">Add Module</button>
