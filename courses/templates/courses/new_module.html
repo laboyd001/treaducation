@@ -1,9 +1,12 @@
 {% extends 'courses/base.html' %}
 
 {% block content %}
+
+    <p><a href="{% url 'courses:my_course_detail' course.id %}" >{{ course.title }}</a></p>
+    <br>
     <h3>Add a New Module:</h3>
 
-    <form action="{% url 'courses:new_module' %}" method='post' enctype="multipart/form-data">
+    <form action="{% url 'courses:new_module' course.id %}" method='post' enctype="multipart/form-data">
         {% csrf_token %}
         <table>{{ form.as_table }}</table>
         <button type="submit" class="btn btn-danger btn-sm">Add Module</button>

@@ -242,18 +242,20 @@ def module(request, module_id):
 # ***Instructor methods***
 
 @login_required
-def new_module(request):
+def new_module(request, course_id):
     ''' adds new modules to treaducation
     '''
-    course = Course.objects.order_by('title')
+    course = Course.objects.get(id=course_id)
 
     if request.method != 'POST':
       form = ModuleForm()
     else:
       form = ModuleForm(request.POST, request.FILES)
       if form.is_valid():
-          form.save()
-          return render(request, 'courses/module_addition_success.html')
+          new_module = form.save(commit=False)
+          new_module.course = course
+          new_module.save()
+          return HttpResponseRedirect(reverse('courses:my_course_detail', args=[course_id]))
     context = {
         'form': form,
         'course': course}
