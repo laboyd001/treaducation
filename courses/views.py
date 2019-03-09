@@ -170,18 +170,26 @@ def new_course(request, user_id):
 
 
 @login_required
-def my_courses(request, user_id):
-    '''user account page with payment details'''
+def my_courses(request):
+    '''Show all courses created by user'''
 
     template_name = 'courses/my_courses.html'
-    user = User.objects.get(id=user_id)
-    courses = Course.objects.filter(owner_id=user_id)
+    courses = Course.objects.filter(owner=request.user)
     context = {
-        'user': user,
         'courses': courses,
     }
 
     return render(request, template_name, context)
+
+@login_required
+def my_course_detail(request, course_id):
+    """Show a single course and all of its modules."""
+
+    course = Course.objects.get(id=course_id)
+    # modules = course.module_set.order_by('title')
+    # context = {'course': course, 'modules': modules}
+
+    return render(request, 'courses/my_course_detail.html', {'course':course})
 
 
 @login_required

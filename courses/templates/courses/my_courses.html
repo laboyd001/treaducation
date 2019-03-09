@@ -9,7 +9,10 @@
 
         <div class="card text-center" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">{{ course.title }}</h5>
+                <h5 class="card-title">
+                    <a href="{% url 'courses:my_course_detail' course.id %}" class="stretched-link text-danger">{{ course.title }}</a>
+                    
+                </h5>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <form action="{% url 'courses:course_delete' course.id %}" method='POST'>
                         {% csrf_token %}
