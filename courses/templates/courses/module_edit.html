@@ -1,0 +1,15 @@
+{% extends "courses/base.html" %}
+
+{% block content %}
+
+<p><a href="{% url 'courses:my_course_detail' course.id %}">{{ course.title }}</a></p>
+
+<p>Edit Module:</p>
+
+<form action="{% url 'courses:module_edit' module.id %}" method='post' enctype='multipart/form-data'>
+    {% csrf_token %}
+    <table>{{ form.as_table }}</table>
+    <button name='submit' class="btn btn-danger btn-sm">Save Changes</button>
+</form>
+
+{% endblock content %}

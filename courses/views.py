@@ -197,13 +197,39 @@ def my_course_detail(request, course_id):
 def course_delete(request, course_id):
     '''delete course from course list'''
 
-    if request.method == 'POST':
-        currentuser = request.user
-        print("current user", currentuser)
-        selected_course = Course.objects.get(id=course_id)
-        selected_course.delete()
+    course = Course.objects.get(id=course_id)
+    courses = Course.objects.filter(owner=request.user).order_by('title')
 
-        return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))
+    course.delete()
+    messages.success(request, 'Your course has been deleted!')
+    return HttpResponseRedirect(reverse('courses:my_courses'))
+
+    context = {'courses': courses}
+    return render(request, 'courses/course_delete.html', context)
+
+
+
+
+    # if request.method == 'POST':
+    #     currentuser = request.user
+    #     print("current user", currentuser)
+    #     selected_course = Course.objects.get(id=course_id)
+    #     selected_course.delete()
+
+    #     return HttpResponseRedirect(reverse('courses:my_courses'))
+
+@login_required
+def delete_topic(request, topic_id):
+    """delete topic from learning log"""
+    topic = Topic.objects.get(id=topic_id)
+    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
+
+    topic.delete()
+    messages.success(request, 'Your topic has been deleted!')
+    return HttpResponseRedirect(reverse('learning_logs:topics'))
+
+    context = {'topics': topics}
+    return render(request, 'learning_logs/delete_topic.html', context)
 
 @login_required
 def course_edit(request, course_id):
@@ -274,6 +300,26 @@ def module_delete(request, module_id):
     return HttpResponseRedirect(reverse('courses:my_course_detail', args=[course.id]))
 
     context = {'module': module, 'course': course}
+    return render(request, 'courses/my_course_detail.html', context)
+
+@login_required
+def module_edit(request, module_id):
+    """Edit an existing module."""
+
+    module = Module.objects.get(id=module_id)
+    course = module.course
+
+    if request.method != 'POST':
+        #Initial request; pre-fill form with the current entry.
+        form = ModuleForm(instance=module)
+    else:
+        #POST data submitted; process data.
+        form = ModuleForm(instance=module, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('courses:my_course_detail', args=[course.id]))
+
+    context = {'module': module, 'course': course, 'form': form}
     return render(request, 'courses/my_course_detail.html', context)
 
 
