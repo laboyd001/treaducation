@@ -50,5 +50,7 @@ urlpatterns = [
     path('new_module/<int:course_id>/', views.new_module,name='new_module'),
     #delete module
     path('delete_module/<int:module_id>', views.module_delete, name="module_delete"),
+    #edit module
+    path('edit_module/<int:module_id>/', views.module_edit, name='module_edit'),
 
 ]

@@ -276,6 +276,26 @@ def module_delete(request, module_id):
     context = {'module': module, 'course': course}
     return render(request, 'courses/my_course_detail.html', context)
 
+@login_required
+def module_edit(request, module_id):
+    """Edit an existing module."""
+
+    module = Module.objects.get(id=module_id)
+    course = module.course
+
+    if request.method != 'POST':
+        #Initial request; pre-fill form with the current entry.
+        form = ModuleForm(instance=module)
+    else:
+        #POST data submitted; process data.
+        form = ModuleForm(instance=module, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('courses:my_course_detail', args=[course.id]))
+
+    context = {'module': module, 'course': course, 'form': form}
+    return render(request, 'courses/module_edit.html', context)
+
 
 # End Modules ==========================================
 

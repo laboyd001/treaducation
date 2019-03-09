@@ -48,6 +48,12 @@
                 Delete Module
             </button>
         </form>
+        <form action="{% url 'courses:module_edit' module.id %}" method='GET'>
+            {% csrf_token %}
+            <button name='submit' class="btn btn-danger btn-sm">
+                Edit Module
+            </button>
+        </form>
     </div>
 </div>
 <br>
