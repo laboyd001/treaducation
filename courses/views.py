@@ -8,6 +8,7 @@ from django.views.generic.base import TemplateResponseMixin, View
 from django.urls import reverse
 from django.db.models import Count
 from django.views.generic.detail import DetailView
+from django.contrib import messages
 
 
 from courses.forms import *
@@ -263,16 +264,18 @@ def new_module(request, course_id):
 
 @login_required
 def module_delete(request, module_id):
-    '''delete course from course list'''
+    '''delete module from module list'''
 
-    
-    if request.method == 'POST':
-        currentuser = request.user
-        print("current user", currentuser)
-        selected_module = Module.objects.get(id=module_id)
-        selected_module.delete()
+    module = Module.objects.get(id=module_id)
+    course = module.course
 
-        return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))
+    module.delete()
+    messages.success(request, 'Your module has been deleted!')
+    return HttpResponseRedirect(reverse('courses:my_course_detail', args=[course.id]))
+
+    context = {'module': module, 'course': course}
+    return render(request, 'courses/my_course_detail.html', context)
+
 
 # End Modules ==========================================
 

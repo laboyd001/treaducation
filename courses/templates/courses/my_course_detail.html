@@ -3,6 +3,14 @@
 
 {% block content %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <div class="jumbotron">
     <h2 class="display-4">{{ course.title }}</h2>
         <p class="lead">{{ course.overview }}</p>
@@ -33,6 +41,14 @@
         </div>
         <p class="mb-1">{{ module.description|linebreaks }}</small>
     </a>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <form action="{% url 'courses:module_delete' module.id %}" method='GET'>
+            {% csrf_token %}
+            <button name='submit' class="btn btn-danger btn-sm">
+                Delete Module
+            </button>
+        </form>
+    </div>
 </div>
 <br>
   {% empty %}

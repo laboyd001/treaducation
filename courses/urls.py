@@ -12,6 +12,7 @@ urlpatterns = [
     path('login', views.login_user, name='login'),
     path('logout', views.user_logout, name='logout'),
     path('register', views.register, name='register'),
+    # ==================================================
 
     # subjects
     # ==================================================
@@ -26,12 +27,12 @@ urlpatterns = [
     # ==================================================
     path('modules/<int:module_id>/', views.module, name='module'),
 
-    # instructor urls
+    # =================================================
+    # instructor courses
     # ==================================================
+
     # add courses
     path('new_course/<int:user_id>/', views.new_course,name='new_course'),
-    # add modules
-    path('new_module/<int:course_id>/', views.new_module,name='new_module'),
     # view your courses
     path('my_courses/', views.my_courses,name='my_courses'),
     # view the details of your course
@@ -41,5 +42,13 @@ urlpatterns = [
     #  edit a course
     path('my_courses/edit/<int:course_id>',views.course_edit, name='course_edit'),
 
+    # =====================================================
+    # Instructor modules
+    # =====================================================
+
+    # add modules
+    path('new_module/<int:course_id>/', views.new_module,name='new_module'),
+    #delete module
+    path('delete_module/<int:module_id>', views.module_delete, name="module_delete"),
 
 ]
