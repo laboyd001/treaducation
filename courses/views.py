@@ -242,7 +242,7 @@ def new_module(request):
     if request.method != 'POST':
       form = ModuleForm()
     else:
-      form = ModuleForm(data=request.POST)
+      form = ModuleForm(request.POST, request.FILES)
       if form.is_valid():
           form.save()
           return render(request, 'courses/module_addition_success.html')
