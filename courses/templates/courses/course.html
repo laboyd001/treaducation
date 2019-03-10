@@ -7,11 +7,20 @@
 <h4>Modules:</h4>
 
     {% for module in modules %}
-        <div class="card text-center">
-            <div class="card">
-                <div class="card-body">
-                        <a href="{% url 'courses:module' module.id %}">{{ module.title }}</a>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ module.title}}</h5>
                 </div>
+                <p class="mb-1">{{ module.description|linebreaks }}</small>
+            </a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <form action="{% url 'courses:module' module.id %}" method='GET'>
+                    {% csrf_token %}
+                    <button name='submit' class="btn btn-danger btn-sm">
+                        Start Module
+                    </button>
+                </form>
             </div>
         </div>
         <br>
@@ -26,4 +35,6 @@
     {% endfor %}
 
 {% endblock content %}
+
+
 
