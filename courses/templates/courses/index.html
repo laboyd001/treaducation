@@ -2,7 +2,14 @@
 
 {% block content %}
 
-<p>Subjects:</p>
+<br>
+<div class="jumbotron">
+        <h2 class="display-4">Welcome to TreadUcation!</h2>
+        <hr class="my-4">
+            <p class="lead">Here you can view courses about tires so they aren't such an expensive mystery.</p>                
+        </div>
+
+<h2>Subjects:</h2>
 
         {% for subject in subjects %}
             <div class="card text-center">
@@ -25,5 +32,7 @@
     
 
 {% endblock content %}
+
+
 
 
