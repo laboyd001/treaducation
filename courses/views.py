@@ -315,5 +315,18 @@ def module_edit(request, module_id):
 
 # End Modules ==========================================
 
+# Student Enrollment ===================================
+
+def student_enroll(request):
+    """add student to course enrollment
+    """
+
+
+
+
+
+# End Student Enrollment ===============================
+
+
 
 
