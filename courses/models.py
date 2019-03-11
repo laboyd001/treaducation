@@ -35,12 +35,11 @@ class Course(models.Model):
     # date and time when course was created
     created = models.DateTimeField(auto_now_add=True)
     # users that are enrolled in a course
-    students = models.ManyToManyField(User,
-                                    related_name='course_joined',
-                                    blank=True)
+    student = models.ManyToManyField(User, through='CourseStudent')
 
     class Meta:
         ordering = ['created']
+            
 
     def __str__(self):
         return self.title
@@ -57,6 +56,16 @@ class Module(models.Model):
 
     def __str__(self):
         return self.title
+
+class CourseStudent(models.Model):
+    '''the blueprints for a student_course relationship
+    '''
+
+    course = models.ForeignKey(Course,
+                            on_delete=models.CASCADE)
+    student = models.ForeignKey(User,
+                            on_delete=models.CASCADE)
+
 
 
 

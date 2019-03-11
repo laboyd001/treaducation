@@ -153,7 +153,6 @@ def new_course(request, user_id):
     ''' adds new courses to treaducation
     '''
     user = User.objects.get(id=user_id)
-    print('user', user.id)
     subject = Subject.objects.order_by('title')
 
     if request.method != 'POST':
@@ -207,19 +206,6 @@ def course_delete(request, course_id):
     context = {'courses': courses}
     return render(request, 'courses/course_delete.html', context)
 
-
-@login_required
-def delete_topic(request, topic_id):
-    """delete topic from learning log"""
-    topic = Topic.objects.get(id=topic_id)
-    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
-
-    topic.delete()
-    messages.success(request, 'Your topic has been deleted!')
-    return HttpResponseRedirect(reverse('learning_logs:topics'))
-
-    context = {'topics': topics}
-    return render(request, 'learning_logs/delete_topic.html', context)
 
 @login_required
 def course_edit(request, course_id):
@@ -314,6 +300,45 @@ def module_edit(request, module_id):
 
 
 # End Modules ==========================================
+
+# Student Enrollment ===================================
+
+def student_enroll(request, course_id):
+    """add student to course enrollment
+    """
+    student = User.objects.get(id=request.user.id)
+    enrolled_course = Course.objects.get(id=course_id)
+
+    if request.method == 'POST':
+        # creates new join table record with current user and selected course
+        new_student = CourseStudent(
+            student = student,
+            course = enrolled_course,
+        )
+
+        new_student.save()
+
+    return render(request, 'courses/enroll_success.html')
+
+def enroll_list(request):
+    """lists the courses in which the request student has enrolled 
+    """
+
+    courses = CourseStudent.objects.filter(student = request.user)
+    course_enrollments = courses
+    context = {
+        'course_enrollments':course_enrollments,
+    }
+
+    return render(request, 'courses/student_courses.html', context)
+
+
+
+
+
+
+# End Student Enrollment ===============================
+
 
 
 

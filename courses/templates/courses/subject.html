@@ -21,6 +21,12 @@
                     Start Course
                 </button>
             </form>
+            <form action="{% url 'courses:student_enroll' course.id %}" method='POST'>
+                {% csrf_token %}
+                <button name='submit' class="btn btn-danger btn-sm">
+                    Enroll
+                </button>
+            </form>
         </div>
     </div>
     <br>
