@@ -208,16 +208,6 @@ def course_delete(request, course_id):
     return render(request, 'courses/course_delete.html', context)
 
 
-
-
-    # if request.method == 'POST':
-    #     currentuser = request.user
-    #     print("current user", currentuser)
-    #     selected_course = Course.objects.get(id=course_id)
-    #     selected_course.delete()
-
-    #     return HttpResponseRedirect(reverse('courses:my_courses'))
-
 @login_required
 def delete_topic(request, topic_id):
     """delete topic from learning log"""
@@ -236,7 +226,7 @@ def course_edit(request, course_id):
     """Edit an existing course"""
 
     course = Course.objects.get(id=course_id)
-    currentuser = request.user
+    courses = Course.objects.filter(owner=request.user)
 
 
     if request.method != 'POST':
@@ -246,9 +236,9 @@ def course_edit(request, course_id):
         form = CourseForm(instance=course, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('courses:my_courses', args=(currentuser.id,)))
+            return HttpResponseRedirect(reverse('courses:my_courses'))
 
-    context = {'course': course, 'form': form}
+    context = {'course': course, 'courses': courses, 'form': form}
     return render(request, 'courses/edit_course.html', context)
 
 # End Courses ========================================
@@ -320,7 +310,7 @@ def module_edit(request, module_id):
             return HttpResponseRedirect(reverse('courses:my_course_detail', args=[course.id]))
 
     context = {'module': module, 'course': course, 'form': form}
-    return render(request, 'courses/my_course_detail.html', context)
+    return render(request, 'courses/module_edit.html', context)
 
 
 # End Modules ==========================================
