@@ -59,7 +59,8 @@ urlpatterns = [
     # ======================================================
 
     # add course_student relationship to join table
-     path('student_enroll/<int:course_id>/', views.student_enroll, name='student_enroll'),
-
+    path('student_enroll/<int:course_id>/', views.student_enroll, name='student_enroll'),
+    # view a student's list of courses
+    path('enroll_list/', views.enroll_list, name='enroll_list'),
 
 ]

@@ -309,9 +309,6 @@ def student_enroll(request, course_id):
     student = User.objects.get(id=request.user.id)
     enrolled_course = Course.objects.get(id=course_id)
 
-    print('student', student.id)
-    print('course', enrolled_course.id)
-
     if request.method == 'POST':
         # creates new join table record with current user and selected course
         new_student = CourseStudent(
@@ -320,6 +317,21 @@ def student_enroll(request, course_id):
         )
 
         new_student.save()
+
+    return render(request, 'courses/enroll_success.html')
+
+def enroll_list(request):
+    """lists the courses in which the request student has enrolled 
+    """
+
+    courses = CourseStudent.objects.filter(student = request.user)
+    course_enrollments = courses
+    context = {
+        'course_enrollments':course_enrollments,
+    }
+
+    return render(request, 'courses/student_courses.html', context)
+
 
 
 
