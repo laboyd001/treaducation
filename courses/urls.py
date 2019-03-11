@@ -53,4 +53,13 @@ urlpatterns = [
     #edit module
     path('edit_module/<int:module_id>/', views.module_edit, name='module_edit'),
 
+
+    # ======================================================
+    # Student enrollment
+    # ======================================================
+
+    # add course_student relationship to join table
+     path('student_enroll/<int:course_id>/', views.student_enroll, name='student_enroll'),
+
+
 ]
