@@ -11,8 +11,18 @@
     {% endfor %}
 </ul>
 {% endif %}
+<br>
+<br>
 
     <h3>My Courses:</h3>
+
+        <form action="{% url 'courses:new_course' user.id %}" method='GET'>
+            {% csrf_token %}
+            <button name='submit' class="btn btn-secondary btn-lg btn-block">
+                Add Course
+            </button>
+        </form>
+        <br>
 
         {% for course in courses %}
         <div class="jumbotron">
