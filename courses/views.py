@@ -161,7 +161,8 @@ def new_course(request, user_id):
       form = CourseForm(data=request.POST)
       if form.is_valid():
           form.save()
-          return render(request, 'courses/course_addition_success.html')
+          return HttpResponseRedirect(reverse('courses:my_courses'))
+
     context = {
         'user': user,
         'form': form,
