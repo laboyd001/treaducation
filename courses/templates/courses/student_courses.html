@@ -6,6 +6,26 @@
     <h2>Enrolled Courses:</h2>
 
     {% for course_enrollment in course_enrollments %}
-        <p>{{ course_enrollment.course.title }}</p>
+        <div class="jumbotron">
+            <h4 class="display-4">
+                {{ course_enrollment.course.title }}
+            </h4>
+                <p class="lead">{{ course_enrollment.course.overview }}</p>
+                <hr class="my-4">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <form action="{% url 'courses:course' course_enrollment.course.id %}" method='POST'>
+                        {% csrf_token %}
+                        <button name='submit' class="btn btn-danger btn-sm">
+                            Start Course
+                        </button>
+                    </form>
+                    <br>
+                </div>
+        </div>
+        <br>
     {% endfor %}
 {% endblock content %}
+
+
+
+
