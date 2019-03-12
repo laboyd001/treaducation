@@ -319,7 +319,7 @@ def student_enroll(request, course_id):
 
         new_student.save()
 
-    return render(request, 'courses/enroll_success.html')
+    return HttpResponseRedirect(reverse('courses:enroll_list'))
 
 def enroll_list(request):
     """lists the courses in which the request student has enrolled 
