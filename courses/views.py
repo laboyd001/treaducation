@@ -139,9 +139,11 @@ def course(request, course_id):
 
     course = Course.objects.get(id=course_id)
     modules = Module.objects.filter(course_id = course_id)
+    subject = course.subject
     context = {
         'course': course,
         'modules': modules,
+        'subject': subject,
     }
 
     return render(request, 'courses/course.html', context)
@@ -237,8 +239,10 @@ def module(request, module_id):
     """
 
     module = Module.objects.get(id=module_id)
+    course = module.course
     context = {
         'module': module,
+        'course': course,
     }
 
     return render(request, 'courses/module.html', context)
