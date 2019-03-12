@@ -1,5 +1,7 @@
 {% extends 'courses/base.html' %}
 
+{% block title %}Add Module{% endblock %}
+
 {% block content %}
 
     <p><a href="{% url 'courses:my_course_detail' course.id %}" >{{ course.title }}</a></p>
