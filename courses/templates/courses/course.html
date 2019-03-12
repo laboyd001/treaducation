@@ -2,6 +2,9 @@
 
 {% block content %}
 
+<p><a href="{% url 'courses:subject' subject.id %}">Return to Course List</a></p>
+
+<br>
 <h2>Course: {{ course.title }}</h2>
 
 <h4>Modules:</h4>
