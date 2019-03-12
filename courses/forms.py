@@ -37,3 +37,6 @@ class ModuleForm(forms.ModelForm):
             'text': 'Module Text',
             'image': 'Image Content'  
         }
+        widgets = {
+            'text': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
+        }

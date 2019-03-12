@@ -54,6 +54,9 @@ class Module(models.Model):
     text = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to = 'images/', default = 'images/no-img.jpg')
 
+    class Meta:
+        ordering = ['title']
+
     def __str__(self):
         return self.title
 
