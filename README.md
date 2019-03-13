@@ -1,6 +1,12 @@
 # Welcome to TreadUcation
 
-This web application is the source code for the TreadUcation e-learning web site. It is powered by Python and Django.
+TreadUcation is a tire e-learning Django web app with two main functionalities:
+
+1.  A portal for instructors to build courses about tires.  This will include being able to add text and pictures that make up content in modules.  Instructors will be able to see a list of the courses they created and have the ability to add to and edit modules.
+
+2.  A portal for students to enroll in courses.  Once a student hits the enroll button they will
+have access to that course in their list of courses.  They will also be able to view the    course and see its contents (text and pictures). 
+
 
 ## Link to ERD
 
