@@ -4,7 +4,7 @@ This web application is the source code for the TreadUcation e-learning web site
 
 ## Link to ERD
 
-![Treaducation-ERD](TreadUcation_ERD.pdf "Treaducation_ERD")
+![Treaducation-ERD](treaducation_erd.PNG "Treaducation_ERD")
 
 ## Helpful Resources
 
