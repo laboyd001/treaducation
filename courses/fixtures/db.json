@@ -1,0 +1,275 @@
+[
+{
+  "model": "courses.subject",
+  "pk": 1,
+  "fields": {
+    "title": "Tire Categories",
+    "slug": "tire-categories"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 2,
+  "fields": {
+    "title": "Tire Maintenance",
+    "slug": "tire-maintenance"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 3,
+  "fields": {
+    "title": "Tire Characteristics",
+    "slug": "tire-characteristics"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "owner": 2,
+    "subject": 1,
+    "title": "Passenger Tires",
+    "slug": "passenger-tires",
+    "overview": "This course will focus on passenger tires and why they are awesome.",
+    "created": "2019-03-06T17:52:32.550Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 2,
+  "fields": {
+    "owner": 2,
+    "subject": 1,
+    "title": "Truck Tires",
+    "slug": "truck-tires",
+    "overview": "Let's talk about the different types of truck tires and their different tread types.",
+    "created": "2019-03-06T17:56:35.063Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 4,
+  "fields": {
+    "owner": 3,
+    "subject": 2,
+    "title": "Changing A Flat",
+    "slug": "changing_a_flat",
+    "overview": "This course will walk you through the basics of changing a flat.",
+    "created": "2019-03-08T00:08:36.497Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 20,
+  "fields": {
+    "owner": 3,
+    "subject": 3,
+    "title": "Parts of a tire",
+    "slug": "tire-parts",
+    "overview": "This course will focus on tire parts.",
+    "created": "2019-03-13T19:15:46.795Z"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "title": "1. Intro",
+    "description": "Welcome to the passenger tire course.  Here you will learn the different passenger tire types.",
+    "text": "Welcome to the passenger tire course.  Here you will learn the different passenger tire types.",
+    "image": "images/intro_passenger_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 2,
+  "fields": {
+    "course": 1,
+    "title": "3. Summer Tires",
+    "description": "Let's talk about summer tires.",
+    "text": "Not intended to be driven in snow or on ice, these low profile tires are designed to provide responsive handling and crisp steering response in both wet and dry conditions.",
+    "image": "images/summer_passenger_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 3,
+  "fields": {
+    "course": 1,
+    "title": "2. All Season Tires",
+    "description": "Let's talk about all season tires.",
+    "text": "The All Season tire classification is a compromise between one developed for use on dry and wet roads during summer and one developed for use under winter conditions. The type of rubber and the tread pattern best suited for use under summer conditions cannot, for technical reasons, give good performance on snow and ice. The all-season tire is a compromise, and is neither an excellent summer tire nor an excellent winter tire. They have, however, become ubiquitous as original and replacement equipment on automobiles marketed in the United States, due to their convenience and their adequate performance in most situations. Even so, in other parts of the world, like Germany, it is common to have a designated tire set for winter and summer. All-Season tires are also marked for mud and snow the same as winter tires but rarely with a snowflake. Owing to the compromise with performance during summer, winter performance is usually poorer than a winter tire.",
+    "image": "images/all-season-passenger_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 4,
+  "fields": {
+    "course": 1,
+    "title": "4. Winter Tires",
+    "description": "Let's talk about winter tires.",
+    "text": "Snow tires\u2014also called winter tires\u2014are tires designed for use on snow and ice. Snow tires have a tread design with larger gaps than those on summer tires, increasing traction on snow and ice. Such tires that have passed a specific winter traction performance test are entitled to display a \"Three-Peak Mountain Snow Flake\" symbol on their sidewalls. Tires designed for winter conditions are optimized to drive at temperatures below 7 \u00b0C (45 \u00b0F). Some snow tires have metal or ceramic studs that protrude from the tire to increase traction on hard-packed snow or ice. Studs abrade dry pavement, causing dust and creating wear in the wheel path. Regulations that require the use of snow tires or permit the use of studs vary by country in Asia and Europe, and by state or province in North America.",
+    "image": "images/winter_passenger_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 5,
+  "fields": {
+    "course": 2,
+    "title": "1. Intro",
+    "description": "Welcome to the truck tire course.",
+    "text": "Your on-road and off-road travels include snow-covered roads, as well as gravel, stone, soil and sandy off-road trails.\r\n\r\nThese tires typically have as much capability off the road as they do on the road. They feature multifaceted tread blocks to help deliver traction in any direction on gravel roads and dirt trails, as well as are branded with the M+S symbol indicating their ability to provide all-season versatility, including traction in snow.",
+    "image": "images/intro_truck_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 6,
+  "fields": {
+    "course": 2,
+    "title": "2. All Season Tires",
+    "description": "Let's talk about all season truck tires.",
+    "text": "For most trucks and SUVs, the majority of the search results will be All-Season Tires and All-Terrain Tires. These are the prevailing tire options for trucks and SUVs, and the tires that pickup and SUV drivers often identify as the likeliest fit.\r\n\r\nAs always, the decision should be based on and in consideration of your unique driving circumstances.\r\n\r\nAll Season Truck Tires are going to give the driver on road comfort, tread life longevity, and better fuel economy.  They are not made to go off road.",
+    "image": "images/all_season_truck_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 7,
+  "fields": {
+    "course": 2,
+    "title": "3. Off Road Tires",
+    "description": "Let's talk about off road max traction truck tires.",
+    "text": "Your off-road challenges include deep mud, loose soil, slippery rock and the toughest trails.\r\n\r\nThese typically oversize tires feature aggressive tread lugs that bite into loose or muddy surfaces to provide maximum traction that helps propel the vehicle through muddy ruts and over slippery rocks. While many are branded with the M+S symbol and some are even pinned to accept optional metal studs to increase ice traction, their typical oversize applications, use of extra-large lugs and the absence of snow-biting sipes often challenges an Off-Road Maximum Traction tire's on-road wintertime traction in slush, packed snow and on ice.",
+    "image": "images/off_road_truck_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 8,
+  "fields": {
+    "course": 2,
+    "title": "4. Winter Tires",
+    "description": "Let's talk about winter truck tires.",
+    "text": "For drivers wanting to maximize snow and ice traction from their winter / snow tires without the inconvenience of using winter tire studs.\r\n\r\nThese tires were developed to meet challenging winter driving conditions around the world by delivering studded-like snow and ice traction without employing noisy, road-damaging studs. These tires feature pliable tread compounds molded into purposeful tread designs that trade some handling in dry and wet conditions to deliver excellent snow and ice traction. Available in a wide range of standard and heavy-duty sizes for full-size vans, crossover vehicles, sport utility vehicles and pickup trucks.\r\n\r\nMeet severe snow service standards, branded with mountain/snowflake symbol.",
+    "image": "images/winter_truck_tire.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 9,
+  "fields": {
+    "course": 4,
+    "title": "Introduction",
+    "description": "This is the introduction to changing a flat.",
+    "text": "Welcome to changing a flat!  Have you ever had a flat and been stuck on the side of the road?",
+    "image": "images/steps_flat_tire_1VUWJ1p.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 10,
+  "fields": {
+    "course": 4,
+    "title": "Steps to Change a Flat",
+    "description": "These are the steps for changing a flat.",
+    "text": "1. Find A Safe Place to Park\r\nDo not park on dirt or grass if possible - your jack may sink into the dirt and become unstable. Trying to avoid hills to prevent your car from rolling.\r\n\r\n2. Secure Your Vehicle\r\nTurn off your engine and engage the emergency or parking brake before you change a flat. Wheel chocks or a heavy rock can be placed behind the opposite side of the side that's being raised to keep your car from rolling.\r\n\r\n3. Grab Your Jack, Spare Tire, and Tools\r\nConsult your owner's manual to check the location of your jack, spare tire, or tire tools if you've never previously used them. After you\u2019ve found these essentials, we recommend you try them out and get familiar with how to use them, so you\u2019re comfortable performing the next few steps in a crunch. Waiting to learn how to use your tools on a dark, rainy night can be frustrating and even dangerous. We recommend doing a practice run when your tire is not flat so you can get a feel for how to perform the task.\r\n\r\n4. Loosen the Lug Nuts Slightly Before You Jack Up Your Car\r\nIf your car has a wheel cover (hubcap), remove it first by using a screwdriver or the flat end of the jack handle or lug wrench. Note: On some cars, the wheel cover is held in place by the lug nuts. Leave this style cover on the flat wheel. \r\nUse the lug wrench to loosen the lugs nuts by turning the wrench counter clockwise. Hold the wrench firmly and push down. Never pull up on the wrench. If the nuts are too tight, use penetrating oil to loosen them or use your foot to push down on lug wrench. Loosen the lug nuts only one turn. Do not remove the lug nuts at this time.\r\n\r\n5. Lift Up Your Car\r\nConsult with your owner\u2019s manual for the best place to secure you jack, and follow these directions carefully! Crank your car up to at least 6 inches, or however much is needed to remove the flat tire. Lower your car to reposition the jack if you notice an instability. Caution: Never place a jack under the axle or suspension member.\r\n\r\n6. Remove the Lug Nuts and Wheel\r\nUse the lug wrench to remove the nuts. Place the lug nuts where you won\u2019t lose them, such as on the inside of your car door. Pull the wheel off and set it aside.\r\n\r\n7. Remove the Flat Tire\r\nRemove the flat tire with both hands. Pull the tire towards you and place it under the car, just in case your jack is unstable and drops your car. Hit the rubber with a hammer or use a liquid penetrate to loosen the joints if you have difficulty removing the tire due to rust.\r\n\r\n8. Put on Your Spare\r\nPlace your spare tire in front of the wheel well, align it with the wheel bolts, and then add your lug nuts. Turn the lug nuts clockwise by hand as tightly as possible. Then take your wrench and turn the bolt tight enough to secure the tire before lowering it to the ground. Do not completely tighten. \r\n\r\nNote: There are different tightening sequences for 4- and 5 -lug wheels. Tightening the nuts in the proper sequence ensures that the wheel mounts properly and that the stress is evenly distributed over the wheel.\r\n\r\n9. Lower Your Car\r\nSlowly lower your vehicle to the ground. Remove the jack and block. Tighten the lug nuts as much as possible, in proper sequence. Caution: Many spare tires are not full-size, normal tires. These smaller spares can\u2019t be driven at normal speeds and should only be driven for short distances. Consult your owner\u2019s manual for instructions and warnings for driving with a compact spare.",
+    "image": "images/tire_change_iczdhMs.jpg"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 19,
+  "fields": {
+    "course": 20,
+    "title": "Parts of a tire",
+    "description": "This module will include parts of a tire",
+    "text": "Beads\r\nWe\u2019ll start from the inside out! Tire beads hold the tire to the rim, or the outer edge of the wheel. They\u2019re made of copper, brass, or bronze-plated high tensile steel wires wound into a rubber band. Tire beads prevent the tire from sliding out of place when the wheel rolls\r\n \r\n \r\nBead Filler\r\nBead filler is a rubber compound inside the tire\u2019s beads. It provides stability to the lower sidewall and bead area. The density and stiffness of a tire\u2019s bead filler help to determine a tire\u2019s performance characteristics.\r\n \r\n \r\nRadial Cord Body\r\nThe cord body gives the tire strength and transmits cornering forces from the tread to the wheel. Rubber coated fabric cord, called body plies, make up the cord body. Body plies can be made of polyester, rayon, or nylon. Polyester is most commonly used.\r\n \r\n \r\nInner Liner\r\nThe inner liner (in the center of the tire diagram) is a rubber compound bonded to the inside of the cord body that retains air under pressure. It has no cord reinforcement, and it functions like an inner tube. Note, however, that modern car tires no longer have inner tubes inside them. A tire\u2019s beads, bead filler, and inner liner work together to hold air within the tire walls.\r\n \r\n \r\n \r\nBelt Plies\r\nBelt plies are two or more strong layers of cord just under the tread area of the tire. The primary function of belt plies is to provide strength and stability to the tire tread. They play a role in improving tire mileage, impact resistance, and traction. Steel is the most common cord material used in belt plies.\r\n \r\nSidewall\r\nThe area of a tire from the bead to the tread\u2014the side of the tire\u2014is called the sidewall. It forms a protective covering for the cord body. Information about the tire is printed on the sidewall. This information includes the tire size, load index, and speed rating. Sidewall rubber compounds are designed to resist damage from ozone, cuts, and snags.\r\n \r\nTread\r\nThe tread is the portion of the tire that comes in contact with the road surface. The tread\u2019s compound and its design have to balance wear, traction, handling, fuel economy, resistance, and other characteristics of the tire. Tread designs vary greatly!",
+    "image": "images/tire_parts.jpg"
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "student": 3
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 2,
+  "fields": {
+    "course": 4,
+    "student": 3
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 5,
+  "fields": {
+    "course": 1,
+    "student": 2
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 6,
+  "fields": {
+    "course": 4,
+    "student": 2
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 7,
+  "fields": {
+    "course": 1,
+    "student": 4
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 8,
+  "fields": {
+    "course": 2,
+    "student": 5
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 9,
+  "fields": {
+    "course": 2,
+    "student": 4
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 10,
+  "fields": {
+    "course": 4,
+    "student": 6
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 11,
+  "fields": {
+    "course": 2,
+    "student": 6
+  }
+},
+{
+  "model": "courses.coursestudent",
+  "pk": 12,
+  "fields": {
+    "course": 1,
+    "student": 5
+  }
+}
+]
