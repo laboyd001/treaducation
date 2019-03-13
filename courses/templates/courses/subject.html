@@ -15,6 +15,7 @@
             <p class="mb-1">{{ course.overview|linebreaks }}</small>
         </a>
         <div class="btn-group" role="group" aria-label="Basic example">
+            {% if request.user.is_authenticated %}
             <form action="{% url 'courses:course' course.id %}" method='GET'>
                 {% csrf_token %}
                 <button name='submit' class="btn btn-danger btn-sm">
@@ -23,13 +24,11 @@
             </form>
             <form action="{% url 'courses:student_enroll' course.id %}" method='POST'>
                 {% csrf_token %}
-                {% if request.user.is_authenticated %}
-
                 <button name='submit' class="btn btn-danger btn-sm">
                     Enroll
                 </button>
-                {% endif %}
             </form>
+            {% endif %}
         </div>
     </div>
     <br>
